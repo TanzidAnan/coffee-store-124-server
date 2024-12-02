@@ -83,6 +83,11 @@ async function run() {
         res.send(result)
     })
 
+    app.get('/users',async(req,res) =>{
+      const queray =userCollection.find()
+      const result =await queray.toArray();
+      res.send(result)
+    })
     app.post('/users',async(req,res) =>{
       const newUser =req.body
       const result =await userCollection.insertOne(newUser);
