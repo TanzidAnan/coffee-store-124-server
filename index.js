@@ -94,6 +94,24 @@ async function run() {
       res.send(result)
     })
 
+    app.patch('/users/:email',async(req,res) =>{
+      const email =req.params.email;
+      const queray ={email}
+      const updateDoc ={
+        $set:{
+          lastTime:req?.body?.lastTime
+        }
+      }
+      const result = await userCollection.updateOne(queray,updateDoc)
+    })
+
+    app.delete('/users/:id', async(req,res) =>{
+      const id =req.params.id;
+      const queray ={ _id:new ObjectId(id)}
+      const result =await userCollection.deleteOne(queray);
+      res.send(result)
+    })
+
 
 
 
