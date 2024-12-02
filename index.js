@@ -102,7 +102,8 @@ async function run() {
           lastTime:req?.body?.lastTime
         }
       }
-      const result = await userCollection.updateOne(queray,updateDoc)
+      const result = await userCollection.updateOne(queray,updateDoc);
+      res.send(result)
     })
 
     app.delete('/users/:id', async(req,res) =>{
